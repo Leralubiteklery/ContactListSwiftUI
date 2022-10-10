@@ -14,7 +14,6 @@ struct ContactDetailsView: View {
     var body: some View {
         
         List {
-            
             HStack {
                 Spacer()
                 Image(systemName: "person.fill")
@@ -28,6 +27,7 @@ struct ContactDetailsView: View {
         }
         .navigationTitle(person.fullName)
     }
+    
 }
 
 struct ContactDetailsView_Previews: PreviewProvider {
