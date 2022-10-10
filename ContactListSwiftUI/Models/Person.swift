@@ -5,14 +5,13 @@
 //  Created by Lera Savchenko on 2.10.22.
 //
 
-import Foundation
-
-struct Person {
+struct Person: Identifiable {
     
     let name: String
     let surname: String
     let phone: String
     let email: String
+    let id: Int
     
     var fullName: String {
         "\(name) \(surname)"
@@ -20,12 +19,12 @@ struct Person {
 }
 
 extension Person {
-    func getContactList() -> [Person] {
+    static func getContactList() -> [Person] {
         
         var persons: [Person] = []
         
         let names = DataStore.shared.names.shuffled()
-        let surnames = DataStore.shared.names.shuffled()
+        let surnames = DataStore.shared.surnames.shuffled()
         let emails = DataStore.shared.emails.shuffled()
         let phones = DataStore.shared.phones.shuffled()
         
@@ -41,7 +40,8 @@ extension Person {
                 name: names[index],
                 surname: surnames[index],
                 phone: phones[index],
-                email: emails[index]
+                email: emails[index],
+                id: index
             )
             persons.append(person)
         }
